@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.automation'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("org.seleniumhq.selenium:selenium-java:4.39.0")
+    implementation("org.testng:testng:7.11.0")
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useTestNG() {
+        useDefaultListeners = true //dùng để tạo report testNG
+        outputDirectory = file("$projectDir/test_output") // folder chứa testNG report
+    }
+
+    testLogging {
+        showStandardStreams = true // Makes standard streams (stdout/stderr) visible in the console
+        // Other logging options can be configured here
+         events "started", "passed", "skipped", "failed", "standardOut", "standardError" // Explicitly list events
+    }
+}
