@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
+<suite name="All Test Suite" parallel="classes" thread-count="2">
+    <listeners>
+        <listener class-name="listeners.TestListener" />
+    </listeners>
     <test verbose="2" preserve-order="true" name="Regresion Test Suite">
         <classes>
-            <class name="testcases.register.Register_01_Verify_Register_Function">
-                <methods>
-                    <include name="testValidRegister"/>
-                </methods>
-            </class>
+            <class name="testcases.register.Register_01_Verify_Register_Function" />
+            <class name="testcases.login.Login01_Verify_Login_Function" />
         </classes>
     </test>
 </suite>
